@@ -1,0 +1,9 @@
+dataset/
+papers/
+testing images/
+.venv/
+.vscode/
+__pycache__/
+*.keras
+*.h5
+*.pyc

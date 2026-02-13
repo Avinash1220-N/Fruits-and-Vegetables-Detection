@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshFood AI - Smart Food Freshness Detector</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <h1>FreshFood AI</h1>
+            </div>
+            <p class="subtitle">Smart Food Freshness Detection</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3>Upload Your Food Image</h3>
+                    <p>Drag & drop or click to select an image</p>
+                    <p class="supported-formats">Supports: PNG, JPG, JPEG</p>
+                    
+                    <div class="button-group">
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                        <button type="button" id="chooseFileBtn" class="btn btn-secondary">
+                            <i class="fas fa-folder-open"></i>
+                            Choose File
+                        </button>
+                        <button type="button" id="uploadBtn" class="btn btn-primary" disabled>
+                            <i class="fas fa-upload"></i>
+                            Upload
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="preview-container">
+                    <h3>Image Preview</h3>
+                    <div class="image-container">
+                        <img id="previewImage" src="#" alt="Image Preview">
+                    </div>
+                    <button type="button" id="detectBtn" class="btn btn-success">
+                        <i class="fas fa-search"></i>
+                        Detect Freshness
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-container">
+                    <h3>Analysis Results</h3>
+                    
+                    <!-- Image display in results -->
+                    <div class="result-image-container">
+                        <img id="resultImage" src="#" alt="Analyzed Image" class="result-image">
+                    </div>
+                    
+                    <div class="result-content" id="resultContent">
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-apple-alt"></i>
+                                <span class="label-text">Chosen Item:</span>
+                            </div>
+                            <span class="result-value" id="foodItem">-</span>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-check-circle"></i>
+                                <span class="label-text">Result:</span>
+                            </div>
+                            <span class="result-value" id="freshnessStatus">-</span>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="label-text">Confidence:</span>
+                            </div>
+                            <span class="result-value" id="confidence">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Reset button -->
+                    <div class="result-actions">
+                        <button type="button" id="resetBtn" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i>
+                            Analyze Another Image
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <h3>Analyzing Image...</h3>
+                    <p>Our AI is examining your food for freshness</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 FreshFood AI. Powered by Machine Learning.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- Floating Chatbot -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <!-- Chat Toggle Button -->
+        <div class="chat-toggle" id="chatToggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-label">Ask AI Assistant</span>
+        </div>
+        
+        <!-- Chat Container -->
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <i class="fas fa-robot"></i>
+                    <span>FreshFood AI Assistant</span>
+                </div>
+                <button class="chat-close" id="chatClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <i class="fas fa-robot"></i>
+                        <div class="message-text">
+                            Hello! I'm your FreshFood AI Assistant. I can help you with:
+                            <br>• Food freshness detection tips
+                            <br>• Health risks of consuming rotten food
+                            <br>• Storage recommendations
+                            <br>• Disease prevention
+                            <br><br>Ask me anything about fruits and vegetables!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Type your question here..." maxlength="500">
+                <button id="chatSend" class="chat-send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
